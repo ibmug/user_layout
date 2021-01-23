@@ -1,22 +1,20 @@
 module.exports = function(sequelize, DataTypes){
     var GroceryList = sequelize.define("GroceryList",{
         //Lets give the Grocery List model name the following:
-        //--//ID-lista //id-Producto //cantidad
-        id:{
-            primaryKey: true,
-            type: DataTypes.UUID,
-            allowNull: false
-        },
+        //ID-privado //ID-publico-lista //id-Producto //cantidad
+        //0 -- RSV --- 46(azucar) -- 2
+        //
+        //server.com/lists/id-publico
+        publicID: DataTypes.STRING,
+        quantity: DataTypes.INTEGER
+
+        
     });
 
 
     GroceryList.associate = function(models){
         //Associating gList with Products.
-        GroceryList.hasMany(models.Product,{
-            foreignKey: 'productID',
-            allowNull: false,
-            onDelete: 'RESTRICT' //setNull, cascade, noaction,setdefault,restrict
-        });
+        GroceryList.hasMany(models.GroceryListProduct);
     };
 
     return GroceryList;
