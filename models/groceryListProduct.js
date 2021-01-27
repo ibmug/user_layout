@@ -3,6 +3,8 @@
 module.exports = function(sequelize, DataTypes){
     const GroceryListProduct = sequelize.define("GroceryListProduct", {
 
+        quantity: DataTypes.INTEGER
+
     }); 
 
     GroceryListProduct.associate = function(models){

@@ -7,18 +7,21 @@ var db = require("../models");
 module.exports = function(app){
     
     //View
-    app.get("/api/listas", function(req,res){
-        db.Products.findAll().then(function(groceryListDB){
-            res.json(groceryListDB);
-        });
-    });
+    // app.get("/api/listas", function(req,res){
+    //     db.GroceryList.findAll().then(function(groceryListDB){
+    //         res.json(groceryListDB);
+    //     });
+    // });
 
 
     app.get("/lista/:id", function(req,res){
         let id = req.params.id;
-        db.GroceryList.findOne({where: {publicID: id}}).then((dbResult)=>{
+        db.GroceryList.findOne({
+            where: {publicID: id}, 
+            include: [db.GroceryListProduct]}).then((dbResult)=>{
             console.log(dbResult);
-            res.render("groceryList", {data:dbResult});
+           // res.render("groceryList", {data:dbResult});
+           res.json(dbResult);
         });
     });
 

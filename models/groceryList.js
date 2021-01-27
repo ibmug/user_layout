@@ -6,7 +6,6 @@ module.exports = function(sequelize, DataTypes){
         //
         //server.com/lists/id-publico
         publicID: DataTypes.STRING,
-        quantity: DataTypes.INTEGER
 
         
     });
