@@ -13,7 +13,7 @@ module.exports = function(app){
         });
     });
 
-    //Add
+    //    
 
     // app.post("/api/products", function(req,res){
     //     //Create a product with the data that was parsed by req.body
