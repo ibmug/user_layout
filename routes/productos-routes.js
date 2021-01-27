@@ -23,6 +23,21 @@ module.exports = function(app){
     //         res.json(groceryListDB);
     //     });
     // });
+    //ID // Nombre //Categoria // Subcatogery //Marca //SKU
+
+    app.post("/api/products", function(req, res) {
+        console.log(req.body);
+        db.Post.create({
+          name: req.body.name,
+          category: req.body.category,
+          subcategory: req.body.subcategory,
+          brand: req.body.brand,
+          sku: req.body.sku
+        })
+          .then(function(groceryListDB) {
+            res.json(groceryListDB);
+          });
+      });
 
 
     //Update
@@ -33,6 +48,19 @@ module.exports = function(app){
     //         res.json(groceryListDB);
     //     });
     // });
+
+    app.put("/api/products", function(req, res) {
+        db.Post.update(req.body,
+          {
+            where: {
+              id: req.body.id
+            }
+          })
+          .then(function(groceryListDB) {
+            res.json(groceryListDB);
+          });
+      });
+    };
 
 
 }
