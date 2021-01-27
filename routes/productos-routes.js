@@ -13,7 +13,29 @@ module.exports = function(app){
         });
     });
 
-    //    
+    // Get route for returning products of a specific category
+  app.get("/api/products/category/:category", function(req, res) {
+    db.Post.findAll({
+      where: {
+        category: req.params.category
+      }
+    })
+      .then(function(groceryListDB) {
+        res.json(groceryListDB);
+      });
+  });
+
+    // Get route for retrieving a single product
+  app.get("/api/products/:id", function(req, res) {
+    db.Post.findOne({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(function(groceryListDB) {
+        res.json(groceryListDB);
+      });
+  });
 
     // app.post("/api/products", function(req,res){
     //     //Create a product with the data that was parsed by req.body
@@ -59,8 +81,18 @@ module.exports = function(app){
           .then(function(groceryListDB) {
             res.json(groceryListDB);
           });
+    });
+
+      // DELETE route for deleting products
+  app.delete("/api/products/:id", function(req, res) {
+    db.Post.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(function(groceryListDB) {
+        res.json(groceryListDB);
       });
-    };
+  });
+};
 
-
-}
