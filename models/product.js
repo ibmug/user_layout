@@ -1,12 +1,22 @@
 module.exports = function(sequelize, DataTypes){
-    let Product = sequelize.define("Product", {
+    var Product = sequelize.define("Product", {
         //Giving the Product model a name of type stirng.
         //ID // Nombre //Categoria // Subcatogery //Marca //SKU
-        id: DataTypes.INT,
+        
         name: DataTypes.STRING,
         category: DataTypes.STRING,
         subcategory: DataTypes.STRING,
-        price: DataTypes.INT,
-        brand: StringType.STRING
+        price: DataTypes.INTEGER,
+        brand: DataTypes.STRING
     });
+
+        Product.associate = function(models){   
+            //Product.belongsTo(models.GroceryList); //Adds id to Grocery List?
+            Product.hasMany(models.GroceryListProduct);
+        };
+
+        return Product;
+
+        ///Maybe separate Category to its own db. --->Later.
+    
 }
