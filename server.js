@@ -20,12 +20,25 @@ app.use(express.static("public"));
 // Set Handlebars.
 var exphbs = require("express-handlebars");
 
+// var hbsHelpers = exphbs.create({
+//     helpers: require("./helpers/handlebars.js").helpers,
+//     defaultLayout: 'layout',
+//     extname: '.hbs'
+// });
+
+// app.engine('.hbs', hbsHelpers.engine);
+// app.set('view engine', '.hbs');
+
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 
+//Agregando un logger..?
+
+
 //Routes
 require("./routes/lista-super-routes.js")(app);
+require("./routes/productos-routes.js")(app);
 
 //Sync our sequelize models and then starting our Express app
 db.sequelize.sync({force: false}).then(function(){

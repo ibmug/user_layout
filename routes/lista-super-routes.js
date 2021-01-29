@@ -18,10 +18,22 @@ module.exports = function(app){
         let id = req.params.id;
         db.GroceryList.findOne({
             where: {publicID: id}, 
-            include: [db.GroceryListProduct]}).then((dbResult)=>{
-            console.log(dbResult);
-           // res.render("groceryList", {data:dbResult});
-           res.json(dbResult);
+            include: db.Product, 
+        }).then((dbResult)=>{
+           
+           let currntList = dbResult.dataValues;
+           let prdcts = [];
+
+           dbResult.dataValues.Products.map((product)=>{prdcts.push(product.dataValues)});
+           
+           
+          // res.json(dbResult.dataValues.Products);
+           let data = {list:currntList, items:prdcts};
+           if(data){
+               res.render("groceryList", {data});
+           } else{
+               res.status(404);
+           }
         });
     });
 

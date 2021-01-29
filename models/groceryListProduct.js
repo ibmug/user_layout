@@ -7,21 +7,11 @@ module.exports = function(sequelize, DataTypes){
 
     }); 
 
-    GroceryListProduct.associate = function(models){
-        //Associating GLP with product AND groceryList
-        GroceryListProduct.belongsTo(models.Product,{
-            foreignKey:{
-                allowNull:false
-            },
-        });
-        GroceryListProduct.belongsTo(models.GroceryList,{
-            foreignKey:{
-                allowNull:false
-            },
-        });
-    }
-
+  //Belongs to many deals with the association here....
+    ////Regla que evite que se haga cascade a Product(con un assoc)
+    
     return GroceryListProduct;
 
 }
 
+//
