@@ -8,9 +8,21 @@ module.exports = function(app){
     
     //View
     app.get("/api/products", function(req,res){
-        db.Products.findAll().then(function(groceryListDB){
+        db.Product.findAll().then(function(groceryListDB){
             res.json(groceryListDB);
         });
+    });
+
+    app.get("/api/products/:id", function(req,res){
+      db.Product.findOne({
+        where: {
+          id: req.params.id
+        },
+      }).then(function(dbResult) {
+        // res.render("index", hbsObject);
+        console.log(dbResult.dataValues);
+        res.render("update-product", {data: dbResult.dataValues});
+      });
     });
 
     //    
@@ -25,7 +37,16 @@ module.exports = function(app){
     // });
     //ID // Nombre //Categoria // Subcatogery //Marca //SKU
 
-    app.post("/api/products", function(req, res) {
+
+    app.get("/add/product", function(req,res){
+      console.log("User is looking to add a product..");
+      db.Product.findAll().then(function(req, res){
+        res.render("addProduct", {data: res});
+      });
+
+    });
+
+    app.post("/add/product", function(req, res) {
         console.log(req.body);
         db.Post.create({
           name: req.body.name,
@@ -38,6 +59,7 @@ module.exports = function(app){
             res.json(groceryListDB);
           });
       });
+    
 
 
     //Update
@@ -49,7 +71,10 @@ module.exports = function(app){
     //     });
     // });
 
-    app.put("/api/products", function(req, res) {
+    app.put("api/products/:id", function(req, res) {
+
+
+
         db.Post.update(req.body,
           {
             where: {
@@ -60,7 +85,7 @@ module.exports = function(app){
             res.json(groceryListDB);
           });
       });
-    };
+    //};
 
 
 }

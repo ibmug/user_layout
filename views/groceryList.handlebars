@@ -1,9 +1,15 @@
 <div class="container">
 
       <p>User should be able to modify his list here</p>
-    
-      {{#each data}}
-      {{publicID}}
+      <p>{{data.list.publicID}}</p>
+
+      {{log "Hola: " data.items}}
+
+      <!-- Lets show each of the items -->
+      <div class ="something">            
+      {{#each data.items}}
+      <p class="row">{{name}}</p>
       {{/each}}
+      </div>
 
 </div>
