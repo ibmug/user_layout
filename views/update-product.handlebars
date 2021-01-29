@@ -1,0 +1,30 @@
+<h1>Update the product with an id of {{data.id}}</h1>
+
+<form data-id="{{data.id}}" class="update-form">
+
+  <div class="form-group">
+    <label for="prdct">Product:</label>
+    <input type="text" id="prdct" name="" value="{{data.name}}">
+ </div>
+
+
+ <div class="prdcat">
+        <select name="prdcat" id="prdcat" value= "{{data.category}}">
+            <option value ="Limpieza"> Limpieza</option>
+            <option value ="Producto Animal"> Productos de Animales</option>
+            <option value ="Producto Vegetal"> Productos de origen Vegetal</option>
+            <option value ="Cuidado Personal"> Cuidado Personal</option>
+            <option value ="Alcohol"> Vinos y Licores</option>
+            <option value ="Farmacia"> Farmacia</option>
+        </select>
+</div>
+<div class="form-group">
+    <label for="prdct">Precio:</label>
+    <input type="number" id="price" name="" value="{{data.price}}" max="10000">
+ </div>
+
+
+
+
+  <button type="submit">Update Product</button>
+</form>
