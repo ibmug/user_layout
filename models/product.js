@@ -4,16 +4,15 @@ module.exports = function(sequelize, DataTypes){
         //ID // Nombre //Categoria // Subcatogery //Marca //SKU
         
         name: DataTypes.STRING,
-        category: DataTypes.STRING,
-        subcategory: DataTypes.STRING,
         price: DataTypes.INTEGER,
         brand: DataTypes.STRING
+        
     });
 
         Product.associate = function(models){   
             //Product.belongsTo(models.GroceryList); //Adds id to Grocery List?
             Product.belongsToMany(models.GroceryList, {through:models.GroceryListProduct});
-
+            Product.belongsTo(models.Category)
             
         }
 
