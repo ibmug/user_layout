@@ -6,9 +6,12 @@ module.exports = function(sequelize, DataTypes){
         //
         //server.com/lists/id-publico
 
-        publicID: DataTypes.STRING,
+        publicID: {
+            type: DataTypes.STRING,
+            uniqueKey: true,
+            allowNull: false,
+        },
 
-        
     });
 
 

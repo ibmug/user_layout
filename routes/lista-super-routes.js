@@ -6,13 +6,6 @@ var db = require("../models");
 //Viewing, Adding, Updating
 module.exports = function(app){
     
-    //View
-    // app.get("/api/listas", function(req,res){
-    //     db.GroceryList.findAll().then(function(groceryListDB){
-    //         res.json(groceryListDB);
-    //     });
-    // });
-
 
     app.get("/lista/:id", function(req,res){
         let id = req.params.id;
@@ -29,11 +22,22 @@ module.exports = function(app){
            
           // res.json(dbResult.dataValues.Products);
            let data = {list:currntList, items:prdcts};
+
+           //Maybe send empty objects?
            if(data){
                res.render("groceryList", {data});
            } else{
-               res.status(404);
+               res.render("error404");
            }
+        });
+    });
+
+    app.get("/", function(req,res){
+        //Let's find all the lists, pull all the ids so when the user wants to create one we can simply tell the user it already exists...
+        db.GroceryList.findAll().then((dbResult)=>{
+            if(dbResult){
+                res.render("addList", {data: dbResult});
+            }
         });
     });
 
