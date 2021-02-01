@@ -41,4 +41,16 @@ module.exports = function(app){
         });
     });
 
+    app.post("/add/list/:id", function(req,res){
+        //Let's find all the lists, pull all the ids so when the user wants to create one we can simply tell the user it already exists...
+        console.log("POSTING: "+ req.params.id);
+        db.GroceryList.create({
+            publicID: req.params.id
+        }).then((err, dbResult)=>{
+            if (err) throw err;
+            console.log("List Successfully Saved!");
+             res.end();
+        });
+    });
+
 }

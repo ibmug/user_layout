@@ -24,6 +24,33 @@ $(document).ready(function(){
 
     });
 
+
+    $( "#createBTN" ).on("click", function( event ) {
+        alert( "Handler for submitLst.submit() called." );
+        event.preventDefault();
+        const somData = {
+            publicID : $('#listid').val(),
+           
+        }
+        console.log(somData.publicID);
+        // Send the PUT request.
+    $.ajax("/add/list/" + somData.publicID, {
+        type: "POST",
+        data: somData
+      }).then(
+        function() {
+          console.log("Adding List...");
+          // Reload the page to get the updated list
+          location.reload();
+        }
+      );
+
+
+      });
+
+
+  //  });
+
         //console.log(data);
        
 
