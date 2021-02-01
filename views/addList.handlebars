@@ -22,24 +22,18 @@
 </form>
 
 
-{{log data}}
-{{log data.id}}
 <!--Add a divide here to show the lists -->
-
  {{#each data}}
                 <!--  {{#unless this.devoured}} -->
+      
                 <div class="col-md-9 text-center">
-                    <pre>{{GroceryList.publicID}}</pre>
-                          <!-- {{this.Date}} -->
-                </div>
-                <div class="col-md-3 text-center">
-                    <form class="devour-form button-size">
-                        <input type="hidden" class="list_id" type="text" value={{listID}}><br>
-                        <button type="submit" class="btn btn-default">Edit it!</button>
-                    </form>
+                  <div class="row">
+                    {{dataValues.publicID}}
+                    <button class="btn btn-default">View!</button>
+                    </div>
                 </div>
                 <!-- {{/unless}} -->
-              {{/each}}
+  {{/each}}
 
 
 
