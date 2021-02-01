@@ -2,7 +2,7 @@ $(document).ready(function(){
     //Something
 
     $( "#srchBTN" ).on("click", function( event ) {
-        alert( "Handler for submitLst.submit() called." );
+       // alert( "Handler for submitLst.submit() called." );
         event.preventDefault();
         const somData = {
             publicID : $('#listID').val(),
@@ -24,9 +24,25 @@ $(document).ready(function(){
 
     });
 
+    $( "#viewBtn" ).on("click", function( event ) {
+        // alert( "Handler for submitLst.submit() called." );
+         event.preventDefault();
+        // const url = window.location.href;
+        // const id = $(this).attr("data-id");
+        // url += "/list/" + id;
+        // window.location.href =url;
+        console.log("DOingsomething");
+       let url = "/lista/"+ $(this).attr("name");
+       //url += $(this).name.val();
+       
+       window.location.href =url;
+ 
+ 
+     });
+
 
     $( "#createBTN" ).on("click", function( event ) {
-        alert( "Handler for submitLst.submit() called." );
+      //  alert( "Handler for submitLst.submit() called." );
         event.preventDefault();
         const somData = {
             publicID : $('#listid').val(),
