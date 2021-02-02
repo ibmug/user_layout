@@ -6,24 +6,14 @@ $(document).ready(function(){
         event.preventDefault();
         const usrString = $('#listid').val();
         let url = "/lista/"+ usrString;
-        window.location.href =url;
-
-        // const somData = {
-        //     publicID : $('#listID').val(),
-           
-        // }
-
-        // $.ajax("/", {
-        //     type: "GET",
-        //   }).then(
-        //     function(result) {
-        //       console.log("Checking Lists...");
-        //     //   console.log(somData.publicID);
-        //     //   console.log(result);
-        //       // Reload the page to get the updated list and display.
-        //       location.reload();
-        //     }
-        //   );
+        console.log("############################EVENT\n");
+        console.log(usrString);
+        if(usrString === ""){
+            location.reload();
+        }else {
+            window.location.href = url;
+        }
+       // window.location.href =url;
 
 
     });
@@ -31,10 +21,7 @@ $(document).ready(function(){
     $( "#viewBtn" ).on("click", function( event ) {
         // alert( "Handler for submitLst.submit() called." );
          event.preventDefault();
-        // const url = window.location.href;
-        // const id = $(this).attr("data-id");
-        // url += "/list/" + id;
-        // window.location.href =url;
+       
         console.log("DOingsomething");
        let url = "/lista/"+ $(this).attr("name");
        //url += $(this).name.val();
@@ -67,29 +54,4 @@ $(document).ready(function(){
 
 
       });
-
-
-  //  });
-
-        //console.log(data);
-       
-
-
-
-
-
-        // Send the PUT request.
-    // $.ajax("/add/product", {
-    //     type: "POST",
-    //     data: somData
-    //   }).then(
-    //     function() {
-    //       console.log("Adding List...");
-    //       // Reload the page to get the updated list
-    //       location.reload();
-    //     }
-    //   );
-
-
-    //   });
 });

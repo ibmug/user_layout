@@ -29,6 +29,9 @@ module.exports = function(app){
             // res.json(dbResult.dataValues.Products);
             let data = {list:currntList, items:prdcts};
             return res.status(202).render("groceryList",{data});
+
+
+
               //  return res.status(404).render("error");
             }else {
                 console.log("Handling error...");
@@ -65,13 +68,18 @@ module.exports = function(app){
         console.log("POSTING: "+ req.params.id);
         db.GroceryList.create({
             publicID: req.params.id
-        }).then((err, dbResult)=>{
-            if (err){
-                console.log("Error: "+ err);
+        }).then(function(dbResult){
+            console.log(dbResult);
+
+            if(dbResult._options.isNewRecord){
+                console.log("List Successfully Saved!");
+                return res.status(202).render("groceryList");
+            } else {
+                console.log("List was not saved, please try again!");
                 return res.status(404).render("addList");
-            } 
-            console.log("List Successfully Saved!");
-             res.end();
+            }
+            
+            
         });
     });
 

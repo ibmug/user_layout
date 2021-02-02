@@ -9,6 +9,7 @@ module.exports = function(sequelize, DataTypes){
         publicID: {
             type: DataTypes.UUID,
             //uniqueKey: true,
+            unique: true,
             allowNull: false,
         },
 
