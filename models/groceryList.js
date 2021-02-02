@@ -7,8 +7,9 @@ module.exports = function(sequelize, DataTypes){
         //server.com/lists/id-publico
 
         publicID: {
-            type: DataTypes.STRING,
-            uniqueKey: true,
+            type: DataTypes.UUID,
+            //uniqueKey: true,
+            unique: true,
             allowNull: false,
         },
 
