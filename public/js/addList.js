@@ -4,22 +4,26 @@ $(document).ready(function(){
     $( "#srchBTN" ).on("click", function( event ) {
        // alert( "Handler for submitLst.submit() called." );
         event.preventDefault();
-        const somData = {
-            publicID : $('#listID').val(),
-           
-        }
+        const usrString = $('#listid').val();
+        let url = "/lista/"+ usrString;
+        window.location.href =url;
 
-        $.ajax("/", {
-            type: "GET",
-          }).then(
-            function(result) {
-              console.log("Checking Lists...");
-            //   console.log(somData.publicID);
-            //   console.log(result);
-              // Reload the page to get the updated list and display.
-              location.reload();
-            }
-          );
+        // const somData = {
+        //     publicID : $('#listID').val(),
+           
+        // }
+
+        // $.ajax("/", {
+        //     type: "GET",
+        //   }).then(
+        //     function(result) {
+        //       console.log("Checking Lists...");
+        //     //   console.log(somData.publicID);
+        //     //   console.log(result);
+        //       // Reload the page to get the updated list and display.
+        //       location.reload();
+        //     }
+        //   );
 
 
     });
