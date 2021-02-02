@@ -1,6 +1,13 @@
+<div>
+      <hr>
+</div>
+
+<div class="container h2">
+    <form class="form-horizontal" id="addListFrm">
+<fieldset>
+
 <div class="container">
 
-      <p>User should be able to modify his list here</p>
       <p>{{data.list.publicID}}</p>
 
       {{log "Hola: " data.items}}
@@ -8,8 +15,13 @@
       <!-- Lets show each of the items -->
       <div class ="something">            
       {{#each data.items}}
-      <p class="row">{{name}}</p>
+      <p class="row" data-id={{id}}>{{name}}</p>
       {{/each}}
+      <button id="updateBTN" name="updateBTN" class="btn btn-primary">Update List</button>
+      
       </div>
-
 </div>
+
+
+
+ <script type="text/javascript" src="../js/addList.js"></script>
