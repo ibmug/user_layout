@@ -65,6 +65,16 @@ module.exports = function(app){
         });
     });
 
+    app.post("/addToList/:listID:prdID", function(req,res){
+        console.log("Posting product: " + req.params.prdID + "To list: " + req.params.listID);
+        db.GroceryListProduct.create({
+            GroceryListId:req.params.prdID,
+            ProductId:req.params.listID
+        }).then(function(result){
+            console.log(dbResult);
+        });
+    });
+
     app.post("/add/list/:id", function(req,res){
         //Let's find all the lists, pull all the ids so when the user wants to create one we can simply tell the user it already exists...
         console.log("POSTING: "+ req.params.id);

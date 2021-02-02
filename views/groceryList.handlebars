@@ -1,23 +1,25 @@
 <div class="container">
-
-      <p>User should be able to modify his list here</p>
       <p>{{data.list.publicID}}</p>
 
+      <div class="row">
+            <!-- form to add a product -->
+            <form id="addPrdtoLstFrm" data-id= {{data.list.id}}>
+            <label for="product">Choose a product to add: </label>
+           <select name="prodSelAdd" id="prodSelAdd"></select>
+           <button id="aplBTN">Add Product!</button>
+           </form>
+      </div>
+      <div class="container" id="productList">
 
       <!-- Lets show each of the items -->
       <div class ="something">            
       {{#each data.items}}
       <p class="row">{{name}}</p>
-      
       {{/each}}
       </div>
-      <div class="row">
-            <!-- form to add a product -->
-            <label for="product">Choose a product:</label>
-           <select name="product" id="productSelect"></select> 
       </div>
-      <div class="container" id="productList">
-      </div>
+
+
 
 </div>
 
