@@ -13,6 +13,29 @@ module.exports = function(app){
         });
     });
 
+    // Get route for returning products of a specific category
+  app.get("/api/products/category/:category", function(req, res) {
+    db.Post.findAll({
+      where: {
+        category: req.params.category
+      }
+    })
+      .then(function(groceryListDB) {
+        res.json(groceryListDB);
+      });
+  });
+
+    // Get route for retrieving a single product
+  app.get("/api/products/:id", function(req, res) {
+    db.Post.findOne({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(function(groceryListDB) {
+        res.json(groceryListDB);
+      });
+  });
     app.get("/api/products/:id", function(req,res){
       db.Product.findOne({
         where: {
@@ -63,6 +86,5 @@ module.exports = function(app){
             //Make validation that a row was changed...
           });
       });
-    
-
+  
 }
