@@ -41,19 +41,22 @@ $(document).ready(function(){
         //values (2, now(), now(), 2, 1);
         let listid = $('#addPrdtoLstFrm').attr('data-id')
         let prodId = $( '#prodSelAdd option:selected' ).attr('data-id');
-        alert(listid + ": " + prodId);
-        console.log(listid + prodId);
+       // alert(listid + ": " + prodId);
+        //console.log(listid + prodId);
 
-        // $.ajax("/addToList/"+ id, prodid, {
-        //     type: "POST",
-        //     data: somData
-        //   }).then(
-        //     function() {
-        //       console.log("Adding Product to List...");
-        //       // Reload the page to get the updated list
-        //       location.reload();
-        //     }
-        //   );
+        $.ajax("/addToList", {
+            type: "POST",
+            data: {
+                GroceryListId: listid,
+                ProductId: prodId
+            }
+          }).then(
+            function() {
+              console.log("Adding Product to List...");
+              // Reload the page to get the updated list
+              location.reload();
+            }
+          );
 
 
     })
