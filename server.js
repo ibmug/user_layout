@@ -14,7 +14,7 @@ app.use(express.json());
 
 //Static dictionary
 
-app.use(express.static("public"));
+app.use(express.static(__dirname + '/public'));
 
 
 // Set Handlebars.
@@ -41,7 +41,7 @@ require("./routes/lista-super-routes.js")(app);
 require("./routes/productos-routes.js")(app);
 
 //Sync our sequelize models and then starting our Express app
-db.sequelize.sync({force: true}).then(function(){
+db.sequelize.sync({force: false}).then(function(){
     app.listen(PORT,function(){
         console.log("App listening on PORT: "+PORT);
     });

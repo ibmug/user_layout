@@ -6,6 +6,8 @@ var db = require("../models");
 //Viewing, Adding, Updating
 module.exports = function(app){
     
+    //PUBLICID
+    //app.get("/lista/:id:product")
 
     app.get("/lista/:id", function(req,res){
         let id = req.params.id;
