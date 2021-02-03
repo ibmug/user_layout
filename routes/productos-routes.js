@@ -13,14 +13,12 @@ module.exports = function(app){
         });
     });
 
+
     app.get("/api/categories", function(req,res){
       db.Category.findAll().then(function(groceryListDB){
           res.json(groceryListDB);
       });
   });
-    // app.get("/", function(req, res){
-    //   db.Product.findAll().then(funcion)
-    // });
 
     app.get("/api/products/:id", function(req,res){
       db.Product.findOne({
@@ -72,6 +70,5 @@ module.exports = function(app){
             //Make validation that a row was changed...
           });
       });
-    
-
+  
 }
