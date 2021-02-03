@@ -70,9 +70,10 @@ module.exports = function(app){
         // console.log(req.body.GroceryListId);
         // console.log(req.body.ProductId);
         //console.log(req);
-        db.GroceryListProduct.create({
+        db.GroceryListProduct.upsert({
             GroceryListId:req.body.GroceryListId,
-            ProductId:req.body.ProductId
+            ProductId:req.body.ProductId,
+            quantity: req.body.quantity
         }).then(function(result){
             console.log(result);
             location.reload();

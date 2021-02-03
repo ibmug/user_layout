@@ -48,7 +48,8 @@ $(document).ready(function(){
             type: "POST",
             data: {
                 GroceryListId: listid,
-                ProductId: prodId
+                ProductId: prodId,
+                quantity: 1
             }
           }).then(
             function() {
