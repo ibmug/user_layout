@@ -10,7 +10,15 @@
 
       <p>{{data.list.publicID}}</p>
 
-      {{log "Hola: " data.items}}
+      <div class="row">
+            <!-- form to add a product -->
+            <form id="addPrdtoLstFrm" data-id= {{data.list.id}}>
+            <label for="product">Choose a product to add: </label>
+           <select name="prodSelAdd" id="prodSelAdd"></select>
+           <button id="aplBTN">Add Product!</button>
+           </form>
+      </div>
+      <div class="container" id="productList">
 
       <!-- Lets show each of the items -->
       <div class ="something">            
@@ -20,8 +28,11 @@
       <button id="updateBTN" name="updateBTN" class="btn btn-primary">Update List</button>
       
       </div>
+      </div>
+
+
+
 </div>
 
+<script type="text/javascript" src="../js/grocery-list.js"></script>
 
-
- <script type="text/javascript" src="../js/addList.js"></script>

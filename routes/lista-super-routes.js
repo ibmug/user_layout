@@ -6,6 +6,8 @@ var db = require("../models");
 //Viewing, Adding, Updating
 module.exports = function(app){
     
+    //PUBLICID
+    //app.get("/lista/:id:product")
 
     app.get("/lista/:id", function(req,res){
         let id = req.params.id;
@@ -13,7 +15,7 @@ module.exports = function(app){
             where: {publicID: id}, 
             include: db.Product, 
         }).then((dbResult, err)=>{
-            console.log(dbResult);
+           //console.log(dbResult);
             
 
             if(dbResult){
@@ -63,9 +65,24 @@ module.exports = function(app){
         });
     });
 
+    app.post("/addToList", function(req,res){
+        // console.log("DOING SOMETHING");
+        // console.log(req.body.GroceryListId);
+        // console.log(req.body.ProductId);
+        //console.log(req);
+        db.GroceryListProduct.upsert({
+            GroceryListId:req.body.GroceryListId,
+            ProductId:req.body.ProductId,
+            quantity: req.body.quantity
+        }).then(function(result){
+            console.log(result);
+            location.reload();
+        });
+    });
+
     app.post("/add/list/:id", function(req,res){
         //Let's find all the lists, pull all the ids so when the user wants to create one we can simply tell the user it already exists...
-        console.log("POSTING: "+ req.params.id);
+        //console.log("POSTING: "+ req.params.id);
         db.GroceryList.create({
             publicID: req.params.id
         }).then(function(dbResult){
